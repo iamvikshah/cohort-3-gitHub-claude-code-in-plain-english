@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  :root {
+    --cream: #F8F7F2; --navy: #113755; --orange: #E8703A; --peach: #FDEFE6;
+    --chip: #E9EEF3; --ink-soft: #5B6B7A; --white: #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--cream); }
+  #stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--cream);
+    font-family: "DM Sans", sans-serif; color: var(--navy); }
+  .abs { position: absolute; }
+  .display { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; letter-spacing: -0.02em; }
+  .mono { font-family: "DM Mono", monospace; }
+  .blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .55; }
+  .chip { position: absolute; font-family: "DM Mono", monospace; font-size: 46px; background: var(--chip);
+    color: var(--navy); padding: 18px 34px; border-radius: 999px; white-space: nowrap; }
+  .bubble { position: absolute; right: 70px; max-width: 860px; background: var(--white); color: var(--navy);
+    font-size: 50px; font-weight: 500; line-height: 1.25; padding: 30px 40px; border-radius: 34px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.18); }
+  .caret { display: inline-block; width: 4px; height: 1em; background: var(--orange); vertical-align: -0.12em; margin-left: 4px; }
+  .reply { position: absolute; left: 150px; font-family: "DM Mono", monospace; font-size: 34px; color: #F6B48E; }
+  .dot { position: absolute; width: 74px; height: 74px; border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; font-family: "DM Mono", monospace; font-size: 30px; font-weight: 500; }
+  .vlabel { position: absolute; font-family: "DM Mono", monospace; font-size: 32px; color: var(--ink-soft);
+    width: 160px; text-align: center; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <!-- ambient soft shapes -->
+  <div class="blob" id="blobA" style="width:620px;height:620px;background:#FBD9C4;"></div>
+  <div class="blob" id="blobB" style="width:560px;height:560px;background:#D6E2EC;"></div>
+
+  <!-- Scene 1: hook -->
+  <div id="s1" class="abs" style="inset:0">
+    <div id="chips"></div>
+    <div id="s1text" class="abs display" style="left:80px; right:80px; top:760px; font-size:98px; line-height:1.06; text-align:left;">
+      <span style="display:block">GitHub feels</span>
+      <span style="display:block">scary, complex</span>
+      <span style="display:block">and overwhelming.</span>
+    </div>
+  </div>
+
+  <!-- Scene 2: reveal -->
+  <div id="s2" class="abs" style="inset:0">
+    <div class="abs display" style="left:80px; top:600px; font-size:136px; line-height:1.02;">
+      <div id="t1">GitHub +</div>
+      <div id="t2">Claude Code,</div>
+      <div style="position:relative; display:inline-block; margin-top:22px; margin-left:-16px; padding:4px 26px 14px;">
+        <div id="hl" class="abs" style="inset:0; background:var(--orange); border-radius:24px; transform-origin:left center;"></div>
+        <div id="t3" style="position:relative; color:#fff; white-space:nowrap;">in Plain English</div>
+      </div>
+    </div>
+    <div id="sub2" class="abs" style="left:80px; right:80px; top:1260px; font-size:50px; line-height:1.35; color:var(--ink-soft);">
+      Beginner-friendly.<br>No coding or GitHub experience needed.
+    </div>
+  </div>
+
+  <!-- Scene 3: typing -->
+  <div id="s3" class="abs" style="left:0; top:0; width:1080px; height:1920px; background:var(--navy);">
+    <div id="h3" class="abs display" style="left:80px; right:80px; top:250px; font-size:120px; line-height:1.02; color:#fff;">
+      Claude Code does the typing for you
+    </div>
+    <div id="youtype" class="abs mono" style="left:80px; top:690px; font-size:36px; color:#F6B48E;">You type:</div>
+    <div class="abs" style="left:70px; right:70px; top:770px; display:flex; flex-direction:column; align-items:flex-end; gap:14px;">
+      <div id="b1" class="bubble" style="position:relative; right:0;"></div>
+      <div id="r1" class="reply" style="position:relative; left:0; margin-bottom:22px;">✓ Saved</div>
+      <div id="b2" class="bubble" style="position:relative; right:0;"></div>
+      <div id="r2" class="reply" style="position:relative; left:0; margin-bottom:22px;">✓ Here’s what changed</div>
+      <div id="b3" class="bubble" style="position:relative; right:0;"></div>
+      <div id="r3" class="reply" style="position:relative; left:0;">✓ New branch ready</div>
+    </div>
+  </div>
+
+  <!-- Scene 4: the way back -->
+  <div id="s4" class="abs" style="inset:0">
+    <div class="abs display" style="left:80px; right:80px; top:400px; font-size:116px; line-height:1.05;">
+      <div id="l41">Try the bold idea.</div>
+      <div id="l42" style="color:var(--orange); margin-top:20px;">You can always go back.</div>
+    </div>
+    <div id="tlLabel" class="abs mono" style="left:110px; top:1000px; font-size:34px; color:var(--ink-soft);">Your project</div>
+    <div id="tlLine" class="abs" style="left:150px; top:1162px; height:8px; width:780px; background:#D3DCE4; border-radius:4px; transform-origin:left center;"></div>
+    <div id="d1" class="dot" style="left:113px; top:1129px;"></div>
+    <div id="d2" class="dot" style="left:373px; top:1129px;"></div>
+    <div id="d3" class="dot" style="left:633px; top:1129px;"></div>
+    <div id="d4" class="dot" style="left:893px; top:1129px;"></div>
+    <div id="v1" class="vlabel" style="left:70px; top:1240px;">v1</div>
+    <div id="v2" class="vlabel" style="left:330px; top:1240px;">v2</div>
+    <div id="v3" class="vlabel" style="left:590px; top:1240px;">v3</div>
+    <div id="v4" class="vlabel" style="left:850px; top:1240px;">broken</div>
+    <div id="ring" class="abs" style="width:118px; height:118px; border:6px solid var(--orange); border-radius:50%; top:1107px;"></div>
+    <svg id="arrow" class="abs" style="left:640px; top:1300px;" width="320" height="130" viewBox="0 0 320 130">
+      <path id="arrowPath" d="M 290 10 C 270 110, 60 110, 30 20" fill="none" stroke="#E8703A" stroke-width="7" stroke-linecap="round"/>
+      <path id="arrowHead" d="M 12 40 L 30 14 L 52 36" fill="none" stroke="#E8703A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div id="restored" class="abs mono" style="left:560px; top:1450px; width:300px; text-align:center; font-size:34px; color:var(--navy);">restored</div>
+  </div>
+
+  <!-- Scene 5: proof -->
+  <div id="s5" class="abs" style="inset:0">
+    <div id="from" class="abs mono" style="left:80px; top:560px; font-size:36px; color:var(--ink-soft);">From earlier cohorts</div>
+    <div id="card5" class="abs" style="left:60px; right:60px; top:640px; height:640px; background:var(--peach); border-radius:48px; padding:70px 70px;">
+      <div class="display" style="font-size:150px; color:var(--orange); line-height:.8; height:90px;">“</div>
+      <div id="q5" class="display" style="font-size:106px; line-height:1.04; margin-top:30px;">You are such a patient teacher.</div>
+      <div id="who5" style="margin-top:44px; font-size:42px; font-weight:600; display:flex; align-items:center; gap:22px;">
+        <span style="display:inline-block; width:56px; height:5px; background:var(--orange);"></span>Farris, earlier cohort
+      </div>
+    </div>
+  </div>
+
+  <!-- Scene 6: outro -->
+  <div id="s6" class="abs" style="inset:0">
+    <div id="photoWrap" class="abs" style="left:350px; top:250px; width:380px; height:380px; border-radius:50%; overflow:hidden; background:var(--peach); border:10px solid #fff; box-shadow:0 20px 50px rgba(17,55,85,.18);">
+      <img src="vik-full.png" style="width:100%; height:100%; object-fit:cover;">
+    </div>
+    <div id="taught" class="abs" style="left:0; right:0; top:690px; text-align:center;">
+      <div style="font-size:38px; color:var(--ink-soft);">Taught live by</div>
+      <div style="font-size:62px; font-weight:700; margin-top:8px;">Vik Shah · Vik AI Academy</div>
+    </div>
+    <div id="name6" class="abs display" style="left:0; right:0; top:930px; text-align:center; font-size:84px; line-height:1.08;">
+      GitHub + Claude Code,<br><span style="background:var(--orange); color:#fff; padding:0 18px; border-radius:16px;">in Plain English</span>
+    </div>
+    <div id="date6" class="abs mono" style="left:0; right:0; top:1180px; text-align:center; font-size:38px; line-height:1.6; color:var(--navy);">
+      Cohort 3 · Mon 12 to Wed 14 October 2026<br>12:00 to 2:30 PM ET · Live, three sessions
+    </div>
+    <div id="btn" class="abs" style="left:150px; width:780px; top:1390px; height:150px; border-radius:999px; background:var(--navy); color:#fff;
+         font-size:52px; font-weight:600; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 0 #0B2740;">
+      Enrol in Cohort 3 · USD $250
+    </div>
+    <div id="logo6" class="abs" style="left:0; right:0; top:1680px; display:flex; justify-content:center; align-items:center; gap:20px;">
+      <div style="width:64px;height:64px;border-radius:14px;background:var(--orange);color:#fff;font-weight:700;font-size:38px;display:flex;align-items:center;justify-content:center;">V</div>
+      <div style="font-size:44px; font-weight:700;">Vik AI Academy</div>
+    </div>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const seg = (t, a, b) => clamp((t - a) / (b - a));
+const eo = x => 1 - Math.pow(1 - x, 3);             // ease out cubic
+const eio = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const back = x => { const c = 1.5; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const show = (el, o, x = 0, y = 0, s = 1) => { el.style.opacity = o; el.style.transform = `translate(${x}px, ${y}px) scale(${s})`; };
+const vis = (el, on) => { el.style.display = on ? '' : 'none'; };
+
+// Scene boundaries (seconds), 100 BPM: 0.6s per beat
+const S = { s1: [0, 3.0], s2: [3.0, 6.6], s3: [6.6, 12.0], s4: [12.0, 15.6], s5: [15.6, 18.6], s6: [18.6, 22.8] };
+const DURATION = 22.8;
+
+// jargon chips (scene 1), words from the page
+const words = ['branches', 'commits', 'pushes', 'pulls', 'merges', 'a terminal', 'commits', 'branches', 'merges', 'pulls', 'pushes', 'a terminal'];
+const chipPos = [[70, 210, -6], [560, 160, 5], [300, 380, 3], [720, 420, -4], [90, 560, 4], [520, 600, -3],
+                 [640, 1240, 4], [80, 1270, -5], [380, 1440, 3], [700, 1480, -4], [120, 1640, 5], [560, 1700, -2]];
+const chipEls = words.map((w, i) => { const d = document.createElement('div'); d.className = 'chip'; d.textContent = w; $('chips').appendChild(d); return d; });
+
+const B = [
+  { el: $('b1'), r: $('r1'), text: '“Save these changes to GitHub.”', a: 7.05, b: 7.65 },
+  { el: $('b2'), r: $('r2'), text: '“What changed since yesterday?”', a: 7.95, b: 8.55 },
+  { el: $('b3'), r: $('r3'), text: '“Create a new branch before we experiment with this.”', a: 8.85, b: 9.75 },
+];
+
+window.render = function (t) {
+  // ambient drift
+  $('blobA').style.transform = `translate(${-120 + 60 * Math.sin(t * .35)}px, ${-140 + 50 * Math.cos(t * .3)}px)`;
+  $('blobB').style.transform = `translate(${620 + 50 * Math.cos(t * .28)}px, ${1460 + 60 * Math.sin(t * .33)}px)`;
+
+  // ---------- Scene 1 ----------
+  const on1 = t < S.s1[1]; vis($('s1'), on1);
+  if (on1) {
+    const out = seg(t, 2.6, 3.0);
+    chipEls.forEach((c, i) => {
+      const [x, y, r] = chipPos[i];
+      const a = 0.0 + i * 0.07, p = eo(seg(t, a, a + .45));
+      const jx = 6 * Math.sin(t * 2.1 + i), jy = 6 * Math.cos(t * 1.9 + i * 1.3);
+      const fall = out * out * 900 * (0.8 + (i % 3) * .2);
+      c.style.left = x + 'px'; c.style.top = y + 'px';
+      c.style.opacity = p * (1 - seg(t, 2.75, 3.0));
+      c.style.transform = `translate(${jx}px, ${jy + (1 - p) * -60 + fall}px) rotate(${r * (1 + out * 3)}deg) scale(${.85 + .15 * p})`;
+    });
+    const tp = eo(seg(t, 0.15, 0.6));
+    show($('s1text'), tp * (1 - seg(t, 2.6, 2.85)), 0, (1 - tp) * 40);
+  }
+
+  // ---------- Scene 2 ----------
+  const on2 = t >= S.s2[0] && t < S.s2[1]; vis($('s2'), on2);
+  if (on2) {
+    const out = seg(t, 6.3, 6.6), fo = 1 - out;
+    const p1 = eo(seg(t, 3.05, 3.4)), p2 = eo(seg(t, 3.25, 3.6));
+    show($('t1'), p1 * fo, 0, (1 - p1) * 60 - out * 40);
+    show($('t2'), p2 * fo, 0, (1 - p2) * 60 - out * 40);
+    const h = eio(seg(t, 3.5, 3.9));
+    $('hl').style.transform = `scaleX(${h})`; $('hl').style.opacity = fo;
+    const p3 = eo(seg(t, 3.75, 4.0));
+    show($('t3'), p3 * fo, (1 - p3) * -20, -out * 40);
+    const ps = eo(seg(t, 4.05, 4.4));
+    show($('sub2'), ps * fo, 0, (1 - ps) * 30);
+  }
+
+  // ---------- Scene 3 ----------
+  const on3 = t >= S.s3[0] - .0001 && t < S.s3[1]; vis($('s3'), on3);
+  if (on3) {
+    const pin = eio(seg(t, 6.6, 6.95)), pout = eio(seg(t, 11.7, 12.0));
+    $('s3').style.transform = `translateY(${(1 - pin) * 1920 - pout * 1920}px)`;
+    const ph = eo(seg(t, 6.8, 7.1));
+    show($('h3'), ph, 0, (1 - ph) * 40);
+    const py = eo(seg(t, 6.95, 7.15)); show($('youtype'), py);
+    B.forEach(({ el, r, text, a, b }) => {
+      const pop = eo(seg(t, a - .12, a));
+      const n = Math.round(text.length * seg(t, a, b));
+      const typing = t >= a && t < b + .25;
+      el.innerHTML = text.slice(0, n) + (typing && (Math.floor(t * 4) % 2 === 0 || t < b) ? '<span class="caret"></span>' : '') + '<span style="color:transparent">' + text.slice(n) + '</span>';
+      show(el, pop, 0, (1 - pop) * 24, .96 + .04 * pop);
+      const pr = eo(seg(t, b + .2, b + .45)); show(r, pr, 0, (1 - pr) * 12);
+    });
+  }
+
+  // ---------- Scene 4 ----------
+  const on4 = t >= S.s4[0] && t < S.s4[1]; vis($('s4'), on4);
+  if (on4) {
+    const fo = 1 - seg(t, 15.3, 15.6);
+    $('s4').style.opacity = fo;
+    const p1 = eo(seg(t, 12.15, 12.5)); show($('l41'), p1, 0, (1 - p1) * 40);
+    const p2 = eo(seg(t, 13.55, 13.9)); show($('l42'), p2, 0, (1 - p2) * 40);
+    show($('tlLabel'), eo(seg(t, 12.2, 12.5)));
+    $('tlLine').style.transform = `scaleX(${eio(seg(t, 12.2, 12.9))})`;
+    const dots = ['d1', 'd2', 'd3', 'd4'].map($), labels = ['v1', 'v2', 'v3', 'v4'].map($);
+    dots.forEach((d, i) => {
+      const a = 12.3 + i * .18, p = back(seg(t, a, a + .3));
+      d.style.transform = `scale(${p})`; d.style.opacity = clamp(p);
+      show(labels[i], eo(seg(t, a + .1, a + .35)));
+      d.style.background = 'var(--navy)'; d.style.color = '#fff'; d.textContent = '✓';
+    });
+    // v4 breaks
+    const brk = seg(t, 12.95, 13.1);
+    if (brk > 0) { dots[3].style.background = 'var(--orange)'; dots[3].textContent = '✕';
+      dots[3].style.transform = `translateX(${Math.sin(t * 60) * 8 * (1 - seg(t, 13.1, 13.35))}px) scale(1)`; }
+    labels[3].style.color = brk > 0 ? 'var(--orange)' : '';
+    // rewind ring v4 -> v3
+    const rw = eio(seg(t, 13.2, 13.65));
+    $('ring').style.left = (893 + 37 - 59 - rw * 260) + 'px';
+    $('ring').style.opacity = seg(t, 13.1, 13.2);
+    $('ring').style.transform = `scale(${1 + .08 * Math.sin(t * 6)})`;
+    const ap = seg(t, 13.2, 13.65);
+    const path = $('arrowPath'), L = path.getTotalLength();
+    path.style.strokeDasharray = L; path.style.strokeDashoffset = L * (1 - eio(ap));
+    $('arrowHead').style.opacity = seg(t, 13.55, 13.7);
+    $('arrow').style.opacity = 1 - seg(t, 14.4, 14.8);
+    show($('restored'), eo(seg(t, 13.65, 13.9)), 0, (1 - eo(seg(t, 13.65, 13.9))) * 12);
+    const glow = seg(t, 13.65, 13.9);
+    dots[2].style.boxShadow = `0 0 0 ${glow * 14}px rgba(232,112,58,.18)`;
+  }
+
+  // ---------- Scene 5 ----------
+  const on5 = t >= S.s5[0] && t < S.s5[1]; vis($('s5'), on5);
+  if (on5) {
+    const fo = 1 - seg(t, 18.3, 18.6);
+    const pc = eo(seg(t, 15.65, 16.0));
+    show($('card5'), pc * fo, 0, (1 - pc) * 60, .95 + .05 * pc);
+    show($('from'), eo(seg(t, 15.7, 15.95)) * fo);
+    const pq = eo(seg(t, 15.85, 16.15)); show($('q5'), pq, 0, (1 - pq) * 24);
+    const pw = eo(seg(t, 16.15, 16.4)); show($('who5'), pw, 0, (1 - pw) * 16);
+  }
+
+  // ---------- Scene 6 ----------
+  const on6 = t >= S.s6[0]; vis($('s6'), on6);
+  if (on6) {
+    const pp = back(seg(t, 18.7, 19.1)); show($('photoWrap'), clamp(seg(t, 18.7, 18.85)), 0, 0, pp);
+    const pt = eo(seg(t, 18.95, 19.25)); show($('taught'), pt, 0, (1 - pt) * 24);
+    const pn = eo(seg(t, 19.2, 19.5)); show($('name6'), pn, 0, (1 - pn) * 24);
+    const pd = eo(seg(t, 19.45, 19.75)); show($('date6'), pd, 0, (1 - pd) * 20);
+    const pb = back(seg(t, 19.75, 20.1));
+    const press = seg(t, 20.9, 21.0) * (1 - seg(t, 21.05, 21.2));
+    $('btn').style.opacity = clamp(seg(t, 19.75, 19.9));
+    $('btn').style.transform = `translateY(${press * 8}px) scale(${pb * (1 - press * .02)})`;
+    $('btn').style.boxShadow = `0 ${10 - press * 8}px 0 #0B2740`;
+    show($('logo6'), eo(seg(t, 20.0, 20.3)));
+  }
+};
+window.DURATION = DURATION;
+render(0);
+</script>
+</body>
+</html>

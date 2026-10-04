@@ -1,0 +1,11 @@
+# Regenerable render intermediates (rebuild with work/render.js and work/audio.js)
+work/frames/
+work/frames-final/
+work/stills/
+work/poster0/
+work/shot-*.png
+work/*sheet*.png
+work/check0.png
+work/spec.png
+work/wave.png
+work/soundtrack.wav
